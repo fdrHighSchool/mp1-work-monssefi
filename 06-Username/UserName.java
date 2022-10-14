@@ -4,18 +4,27 @@ public class UserName {
   public static void main(String[] args) {
     // create Scanner object
     Scanner s = new Scanner(System.in);
-
+    String teacher =("teacher");
+    String student =("student");
+    System.out.println("Are you a teacher or student: ");
+    String user =s.nextLine();
+    
     // get String input from user
     System.out.print("Enter your first name: ");
     String firstName = s.nextLine();
     System.out.print("Enter your last name: ");
     String lastName = s.nextLine();
-
+    System.out.print("Enter your favorite number: ");
+    String num =s.nextLine();
     // test output
-    System.out.println("Hello " + initialize(firstName) + "." + initialize(lastName) + ".");
-
+    if (user.equals("student")){
+     System.out.println("The school gmail you made is " + (firstName) + initial(lastName) + (num)+"@nycstudents.net");
+    }
+     else 
+      System.out.println("The school gmail you made is " + initial(firstName)+(lastName) + (num)+"@schools.nyc.gov");
     s.close();
-  } // end main method
+    
+  }// end main method
 
   /*
    * Name: initialize
@@ -23,8 +32,8 @@ public class UserName {
    * Input: a name (String)
    * Return: a single character (String)
    */
-  public static String initialize(String n) {
+  public static String initial(String n) {
     return n.substring(0, 1);
-  } // end initialize method
+   } // end initialize method
 
 } // end class
