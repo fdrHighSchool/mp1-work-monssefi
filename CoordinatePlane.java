@@ -1,16 +1,31 @@
 import java.util.Scanner;
 
-public class CoordinatePlane {
+public class test {
   public static void main(String[] args) {
     Scanner s = new Scanner(System.in);
     String point1, point2;
-
+    int c=0;
     System.out.print("Please enter a point in the form (x, y): ");
-    // write a statement to store the input
-
-    // check if the user input the point correctly
-    // if yes, continue code
-    // if no, get the input again
+     while(true)
+    {                                                    
+        System.out.println("Enter 'D' without apostrophe for dry or 'W' for wet");
+        c=s.next().charAt(0);                                                                  
+        if (c=='D' || c=='d')
+        {
+            System.out.println("cool");
+            break;
+        }
+        else if (c=='w' || c=='W')
+        {
+            System.out.println("nice");
+            break;
+        }
+        else 
+        {
+            System.out.println("Invalid input.");     
+            System.out.println("Please try again:");                                                
+        }
+    }
 
     System.out.print("Please enter a second point: ");
     // write a statement to store the input
