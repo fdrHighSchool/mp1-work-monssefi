@@ -1,121 +1,102 @@
 import java.util.Scanner;
-import java.util.Random;
-class test {
+
+public class Main {
   public static void main(String[] args) {
-        
-        //Create a Scanner (import it above!) and ask the user how many random passwords they want generated
-       Scanner s = new Scanner(System.in);
-            
-        String teacher =("teacher");
-        
-        String student =("student");
-        
-        System.out.println("Are you creating a teacher account or student account if yes then type teacher or student: ");
-        
-        String user =s.nextLine(); 
-        
-        System.out.print("Enter your first name: ");
-        
-        String firstName = s.nextLine();
-        
-        System.out.print("Enter your last name: ");
-        
-        String lastName = s.nextLine();
-        
-        System.out.print("Enter your favorite number: ");
-        
-        String num =s.nextLine();
-        
-        // test output
-         if (user.equals("student")){//If the user types student it will set up the gmail in the student format
-          System.out.println("The school gmail you made is " + (firstName) + initial(lastName) + (num)+"@nycstudents.net");
-          
-         }
-          else //Other wise if user typs teacher it will set up the gmail in the teacher format 
-           System.out.println("The school gmail you made is " + initial(firstName)+(lastName) + (num)+"@schools.nyc.gov");
-           System.out.println();
-            //Ask the user how long they want their random passwords to be
-           System.out.print("How long do you want your random passwords to be? ");
-            
-           int len = s.nextInt();
-    
-           System.out.println("The password is "+gp(len));
-        
-           System.out.println();
-        
-           System.out.println("Your password strength: " + gps(len));
-        s.close();
-      }
-    
-  
-    public static String initial(String n) {
-     return n.substring(0, 1);
-  } // end initialize method
-
-    
-    //Create a function that randomly generates a letter (lowercase or uppercase) or number (0-9) using ASCII
-    //'0' - '9' => 48-57 in ASCII
-    //'A' - 'Z' => 65-90 in ASCII
-    //'a' - 'z' => 97-122 in ASCII
-    //sybmols => 33-47 in ASCII
-    public static String gp(int length) {
-        String password="";
-        int min, max;
-
-      for(int i = 0; i < length; i++) {
-          // generate a random number
-          // 65 - 90 capital letter
-          // 97 - 122 lower case
-          // 33 - 47 special symbols
-          int choice = (int)(Math.random()*(3) + 1);
-    
-          if (choice == 1) {
-            min = 65;
-            max = 90;
-          }
-    
-          else if (choice == 2) {
-            min = 97;
-            max = 122;
-          }
-    
-          else {
-            min = 33;
-            max = 47;
-          }
-    
-          int rand = (int)(Math.random()*(max-min+1) + min);
-    
-          // convert the int ---> character c =(char)i;
-          char c = (char)rand;
-          // System.out.println(rand + " " + c);
-    
-          // add the char to the password String
-          password = password + c; // password += c;);
-                           
-           }    
-           return password;
+    Scanner s = new Scanner(System.in);
+    String point1, point2;
+    int c=0; 
+    System.out.print("Please enter a point in the form (x, y): ");
+     while(true)
+    {                                                    
+        System.out.println("Enter 'D' without apostrophe for dry or 'W' for wet");
+                                                                         
+        if (c=='D' || c=='d')
+        {
+            System.out.println("cool");
+            break;
         }
-        
-       
-
-                    
-          
-        
-            
-    
-    //EXTENSION!!
-    //Create a function that returns the password strength ("weak", "medium", "strong") based on the password length
-    public static String gps(int length) {
-        String level ="";
-        if(length >= 17 || length == 100) {
-            level +="Strong";
-        } else if(length >= 10 || length == 15) {
-            level +="Medium";
-        } else {
-            level += "Weak";
+        else if (c=='w' || c=='W')
+        {
+            System.out.println("nice");
+            break;
         }
-        return level;
+        else 
+        {
+            System.out.println("Invalid input.");     
+            System.out.println("Please try again:");                                                
+        }
     }
 
-}
+    System.out.print("Please enter a second point: ");
+    // write a statement to store the input
+
+    // check if the user input the point correctly
+    // if yes, continue code
+    // if no, get the input again
+
+
+    // test your methods below:
+
+
+  } // end main method
+
+  /*
+   * N: checkInput
+   * P: determine whether or not the input followed correct format
+   * I: String user typed in
+   * R: ???
+   */
+
+
+  /*
+   * N: getX
+   * P: get the x-coordinate of the point
+   * I: coordinate in the form (x, y) (String)
+   * R: x-coordinate (int)
+   */
+  public static int getX(String point) {
+    // determine where the comma is located
+    int commaPos = point.indexOf(",");
+
+    // grab substring from after parentesis up to comma
+    String x = point.substring(1, commaPos);
+
+    // return value back to main so it can be used later in the program
+    return Integer.parseInt(x);
+  } // end getX method
+
+  /*
+   * N: getY
+   * P: get the y-coordinate of the point
+   * I: coordinate in the form (x, y) (String)
+   * R: y-coordinate (int)
+   */
+
+
+  /*
+   * N: quadrant
+   * P: determine which quadrant the point lies in
+   * I:
+   * R:
+   */
+
+
+  /*
+   * N: euclideanDistance
+   * P: calculate the distance between two points
+        sqrt((x2 - x1)^2 + (y2 - y1)^2)
+   * I:
+   * R:
+   */
+
+
+  /*
+   * N: taxicabDistance
+   * P: calculate the distance between two points
+        abs(x2 - x1) + abs(y2 - y1)
+   * I:
+   * R:
+   */
+
+
+} // end class
