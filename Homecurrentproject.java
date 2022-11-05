@@ -1,13 +1,20 @@
 import java.util.Scanner;
 
-public class CoordinatePlane {
+public class Main {
   public static void main(String[] args) {
+    
     Scanner s = new Scanner(System.in);
+    
     String point1, point2;
+    
     boolean isValid;
+    
+       
     do {
+       
       System.out.print("Please enter a point in the form (x, y): ");
- 
+      
+      System.out.println(" ");
       point1 = s.nextLine();
 
       isValid = checkInput(point1);
@@ -18,27 +25,50 @@ public class CoordinatePlane {
 
     do {
       System.out.print("Please enter a second point: ");
-  
+      
+      System.out.println(" ");
       point2 = s.nextLine();
-
       isValid = checkInput(point2);
       if (isValid != true) {
         System.out.println("Incorrect form try again!");
       }
     } while (isValid != true);
 
-    // test your methods below:
-    int x1 = getX(point1);
-    int x2 = getX(point2);
-    System.out.println("The x values are "+x1 + " and " + x2);
-    int y1 = getY(point1);
-    int y2 = getY(point2);
-    System.out.println("The y values are "+y1 + " and " + y2);
+    System.out.println("Choose any number for height: ");
+    
+    int h= s.nextInt();   
 
+    System.out.println("Choose any number for radius: ");
+
+    int r= s.nextInt();
+    
+    int x1 = getX(point1);
+    
+    int x2 = getX(point2);
+    
+    System.out.println("The x values are "+x1 + " and " + x2);
+    q(x1, x2); 
+    
+    System.out.println(" ");
+    
+    int y1 = getY(point1);
+    
+    int y2 = getY(point2);
+    
+    System.out.println("The y values are "+y1 + " and " + y2);
+    q(y1, y2);
+    System.out.println(" ");
+    
+    System.out.println("The eudclidean distance between "+"("+(x1+", "+y1)+")"+" and "+"("+(x2+","+y2)+")"+" is "+eudclideanDistance(x1, y1, x2, y2));
+    
+    System.out.println(" ");
+    
+    System.out.println("The taxicab distance between "+"("+(x1+", "+y1)+")"+" and "+"("+(x2+","+y2)+")"+" is "+taxicabDistance(x1,y1,x2, y2));
   } // end main method
 
+  
 
-   
+
   public static boolean checkInput(String p) {
     boolean result = true;
     
@@ -55,7 +85,7 @@ public class CoordinatePlane {
     } // end third if statement
 
     return result;
-  } // end checkInput method
+   } // end checkInput method
 
   
   public static int getX(String XX) {
@@ -67,7 +97,7 @@ public class CoordinatePlane {
 
 
     return Integer.parseInt(x);
-  } // end getX method
+   } // end getX method
 
   
   public static int getY(String YY) {
@@ -82,53 +112,49 @@ public class CoordinatePlane {
   } // end getX method
 
  
-  public static String q(int graph){
-      String quardrant="";
-          if (x  > 0 && y > 0)
-            quardrant +="lies in First quadrant";
-            
-          else if (x < 0 && y > 0)
-            quardrant +="lies in Second quadrant";
-     
-          else if (x < 0 && y < 0)
-            quardrant +="lies in Third quadrant";
-     
-          else if (x > 0 && y < 0)
-            quardrant +="lies in Fourth quadrant";
-     
-          else if (x == 0 && y > 0)
-            quardrant +="lies at positive y axis";
-     
-        else if (x == 0 && y < 0)
-            quardrant +="lies at negative y axis";
-     
-        else if (y == 0 && x < 0)
-            quardrant +="lies at negative x axis";
-     
-        else if (y == 0 && x > 0)
-            quardrant +="lies at positive x axis";
-     
-        else
-            quardrant +="lies at origin";
-        return quardrant;
-   }
+  public static void q(int x, int y){
+      if (x > 0 && y > 0){
+        System.out.println("lies in First quadrant");
+      }
+        else if (x < 0 && y > 0){
+             System.out.println("lies in Second quadrant");
+        }
+        else if (x < 0 && y < 0){
+             System.out.println("lies in Third quadrant");
+        }
+        else if (x > 0 && y < 0){
+             System.out.println("lies in Fourth quadrant");
+        }
+        else if (x == 0 && y > 0){
+            System.out.println("lies at positive y axis");
+        }
+        else if (x == 0 && y < 0){
+            System.out.println("lies at negative y axis");
+        }
+        else if (y == 0 && x < 0){
+            System.out.println("lies at negative x axis");
+        }
+        else if (y == 0 && x > 0){
+            System.out.println("lies at positive x axis");
+        }
+        else {
+            System.out.println("lies at origin");
+        }
+    }
   
-  /*
-   * N: euclideanDistance
-   * P: calculate the distance between two points
-        sqrt((x2 - x1)^2 + (y2 - y1)^2)
-   * I:
-   * R:
-   */
+    
+  
+   public static double eudclideanDistance(int x1,int y1,int x2, int y2){
+    double Dis=Math.sqrt((x2-x1)*(x2-x1) + (y2-y1)*(y2-y1));
+    return Dis;
+  }
 
 
-  /*
-   * N: taxicabDistance
-   * P: calculate the distance between two points
-        abs(x2 - x1) + abs(y2 - y1)
-   * I:
-   * R:
-   */
-
+  public static int taxicabDistance(int x1,int y1,int x2,int y2){
+   int b1=x2-x1;
+   int b2=y2-y1;
+   int b3 =Math.abs(b2)+Math.abs(b1);
+   return b3;
+  }
 
 } // end class
